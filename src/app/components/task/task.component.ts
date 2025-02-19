@@ -24,4 +24,9 @@ export class TaskComponent implements OnInit {
     });
   }
 
+  toggleReminder(task : Task){
+    task.reminder = !task.reminder; // Send the updated task on server.
+    this.taskService.updateTaskReminder(task).subscribe();
+  }
+
 }
