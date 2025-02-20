@@ -17,6 +17,12 @@
       "text": "Food Shopping",
       "day": "May 7th at 12:30pm",
       "reminder": false
+    },
+    {
+      "text": "PK's Birthday",
+      "day": "Feb 24th at 00:00am",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
