@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 import { Task } from 'src/app/Task';
 
 @Component({
@@ -11,8 +13,17 @@ export class AddTaskComponent implements OnInit {
   text: string = "";
   day: string = "";
   reminder : boolean = false;
+  showAddTask : boolean = false;
   @Output() onAddTask : EventEmitter<Task> = new EventEmitter();
-  constructor() { }
+  subscription !: Subscription;
+
+  constructor(private uiService : UiService) { 
+    // Subscription is helping us to capture the same value across all the components based upon a single source of 
+    // truth and use accordingly!
+    this.subscription = this.uiService.onToggle().subscribe((res) => {
+      this.showAddTask = res;
+    });
+  }
 
   ngOnInit(): void {
   }
